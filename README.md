@@ -177,3 +177,22 @@ powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Target ProfileP
 |---|---|
 | `test-e2e.mjs` | 全流程端到端：建包→物品→状态→角色→事件→Lua→C#→本地化→校验→打包→发布 |
 | `audit-templates.mjs` | 把 `gen_item` 产物里的组件属性对照官方组件属性表 |
+---
+
+## 数据来源与许可
+
+本项目的源码（`src/*.ts`、`tools/*`）为 MIT。但 `src/` 里有 **4 个生成的数据文件**，来源需要单独说明：
+
+| 文件 | 内容 | 来源 |
+|---|---|---|
+| `src/vocabulary.ts` | 元素名 112 / 属性名 517 / 枚举值 352 条的中英对照 | 合作者「渊深 XML 翻译工具」的内置词表 |
+| `src/known-names.ts` | 元素名 11,635 / 属性名 3,327 / 枚举值 1,600 条 | 从**本机安装的游戏** `Content` 目录的 617 个 XML 抽取 |
+| `src/schemas.ts` | StatusEffect type/target、Item category、StatTypes、AbilityFlags、EventAction | 游戏自身数据 ∪ 官方 [BaroModDoc](https://regalis11.github.io/BaroModDoc/) |
+| `src/components.ts` | 85 个物品组件 / 609 条属性 | 官方 BaroModDoc 的 `ItemComponents/*` 页面 |
+
+说明：
+
+- `known-names.ts` / `components.ts` / `schemas.ts` 收录的是**名称、字段名、枚举取值**这类事实性标识符，用于校验与补全，不包含游戏的文本、贴图、音频等资产。
+- `vocabulary.ts` 的词表来自合作者，**公开再分发前请先取得其同意**（如不希望随仓库分发，可将此文件移出跟踪，改为安装后自行生成）。
+- 官方文档页面本身不随本仓库分发；本文档只说明规则依据。仓库阅读者如需原文请访问 BaroModDoc。
+- 这些文件都是**生成文件**，不要手工编辑。

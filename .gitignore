@@ -29,3 +29,6 @@ plan.json
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# 第三方派生资料（合作者工具分析、官方文档整段摘录）—— 公开仓库不收录，但随分发包一起给
+refs/
