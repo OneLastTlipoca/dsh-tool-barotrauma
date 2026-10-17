@@ -196,3 +196,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Target ProfileP
 - `vocabulary.ts` 的词表来自合作者，**公开再分发前请先取得其同意**（如不希望随仓库分发，可将此文件移出跟踪，改为安装后自行生成）。
 - 官方文档页面本身不随本仓库分发；本文档只说明规则依据。仓库阅读者如需原文请访问 BaroModDoc。
 - 这些文件都是**生成文件**，不要手工编辑。
+---
+
+## 版本历史
+
+各版本的变更见 [CHANGELOG.md](CHANGELOG.md)。
