@@ -4,6 +4,30 @@
 
 ---
 
+## [0.5.0] — 2026-10-17
+
+### 新增
+
+- **`barotrauma_gen_item` 新增 `kind="tool"`** —— 工具型物品（焊接工具、灭火器一类）。
+  结构依据**原版** `Content/input.xml` 的 `weldingtool`（行 12693）与 `extinguisher`（行 12973），
+  以及官方 ItemComponents 的 RepairTool 页（22 条属性）。
+
+  可配置：`range`、`barrelPos`、`structureFixAmount`、`fireDamage`、`extinguishAmount`、
+  `waterAmount`、`repairThroughHoles`、`ignoreCharacters`、`hitItems`、`repairMultiple`、
+  `fuelTag`、`toolSkillLevel`。
+
+  `fuelTag` 非空会生成 `<RequiredItems type="Contained">`（工具需要燃料）—— 这是原版焊接工具的写法：
+  `<RepairTool>` 内部可以挂 `<RequiredItems>`、`<RequiredSkill>`、`<ParticleEmitter>`、`<sound>`。
+  灭火器一类不需要燃料，传 `fuelTag: ""`。
+
+### 修复
+
+- **`AMMO_CONTAINER_MISSING` 误报工具类物品** —— `<RequiredItems type="Contained">` 有两种语义：
+  武器的弹药、工具需要的燃料。原检查不区分，会把焊接工具误判成"缺 ItemContainer"。
+  现在要求同一物品**同时存在 `<RangedWeapon>`** 才做该检查。
+  全量 32 个真实内容包上，该类问题从 1 条降为 **0**。
+
+---
 ## [0.4.0] — 2026-10-17
 
 首个公开发布。**17 个工具**覆盖潜渊症 mod 的完整制作流程，零外部服务依赖。

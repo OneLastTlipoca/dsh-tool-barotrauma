@@ -1,6 +1,6 @@
 {
   "name": "dsh-tool-barotrauma",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "DeepSeek Harness 潜渊症（Barotrauma）mod 制作工具集：内容包骨架、物品/武器/角色/事件 XML 生成、Lua 与 C# 内存脚本脚手架、本地化、校验与创意工坊打包发布。零外部 MCP 依赖。",
   "type": "module",
   "main": "lib/index.js",

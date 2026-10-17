@@ -205,3 +205,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Target ProfileP
 ## 参与开发
 
 环境要求、构建与自检流程、改校验规则的约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## 查组件属性
+
+不确定某个物品该用哪个组件、或某个组件有哪些字段时：
+
+```text
+barotrauma_describe_component {}                         # 列出全部 85 个组件名
+barotrauma_describe_component { name: "RepairTool" }     # 查它自己的 22 条属性
+barotrauma_describe_component { search: "penetration" }  # 反向查：哪些组件有这个字段
+```

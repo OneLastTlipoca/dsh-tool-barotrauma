@@ -42,6 +42,7 @@ const specs = [
   { identifier: 'AuditAmmo', kind: 'ammo', basePrice: 100 },
   { identifier: 'AuditMeds', kind: 'consumable', basePrice: 80, reduce: ['bleeding:2'] },
   { identifier: 'AuditArmor', kind: 'equipment', basePrice: 800 },
+  { identifier: 'AuditTool', kind: 'tool', basePrice: 150 },
   { identifier: 'AuditMat', kind: 'material', basePrice: 20 },
 ]
 

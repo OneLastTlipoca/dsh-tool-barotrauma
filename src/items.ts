@@ -49,6 +49,7 @@ const ITEM_KINDS = [
   'ammo',
   'consumable',
   'equipment',
+  'tool',
   'material',
 ] as const
 type ItemKind = typeof ITEM_KINDS[number]
@@ -352,7 +353,70 @@ ${spriteLine(i.sprite)}
 ${priceBlock(i.basePrice, i.storeMultiplier, i.minAvailable)}</Item>`
 }
 
-// ── 目标文件选择 ─────────────────────────────────────────────────────────────
+/**
+ * 工具型物品（焊接工具 / 灭火器的共同骨架）。
+ *
+ * 依据是**原版** `Content/input.xml` 的 `weldingtool`（行 12693）与 `extinguisher`（行 12973），
+ * 以及官方 ItemComponents 的 RepairTool 页（22 条属性）。
+ *
+ * `RepairTool` 自己可以挂 `<RequiredItems type="Contained">` 指定燃料、
+ * 挂 `<RequiredSkill>` 指定使用技能 —— 这是原版焊接工具的写法，不是猜的。
+ */
+function toolXml(i: {
+  identifier: string
+  sprite: SpriteSpec
+  iconTexture: string
+  iconSourceRect: string
+  scale: string
+  tags: string
+  category: string
+  bodyWidth: number
+  bodyHeight: number
+  range: number
+  barrelPos: string
+  structureFixAmount: number
+  fireDamage: number
+  extinguishAmount: number
+  waterAmount: number
+  repairThroughHoles: boolean
+  ignoreCharacters: boolean
+  hitItems: boolean
+  repairMultiple: boolean
+  fuelTag: string
+  skillLevel: number
+  basePrice: number
+  storeMultiplier: number
+  minAvailable: number
+}): string {
+  const fuel = i.fuelTag.trim() !== ''
+    ? `
+    <RequiredItems items="${i.fuelTag}" type="Contained" msg="ItemMsgWeldingFuelRequired" />`
+    : ''
+  // 只写非零的量，避免生成一堆 ="0" 干扰阅读
+  const amounts = [
+    i.structureFixAmount !== 0 ? `structurefixamount="${i.structureFixAmount}"` : '',
+    i.fireDamage !== 0 ? `firedamage="${i.fireDamage}"` : '',
+    i.extinguishAmount !== 0 ? `extinguishamount="${i.extinguishAmount}"` : '',
+    i.waterAmount !== 0 ? `wateramount="${i.waterAmount}"` : '',
+  ].filter((part) => part !== '').join(' ')
+  return `<Item name="" identifier="${i.identifier}" category="${i.category}" tags="${i.tags}"
+      cargocontaineridentifier="metalcrate" scale="${i.scale}" impactsoundtag="impact_metal_light">
+  <InventoryIcon texture="${i.iconTexture}" sourcerect="${i.iconSourceRect}" origin="0.5,0.5" />
+${spriteLine(i.sprite)}
+  <Body width="${i.bodyWidth}" height="${i.bodyHeight}" density="25" />
+  <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="60,0"
+            handle1="-62,-16" handle2="-10,-6" msg="ItemMsgPickUpSelect" />
+  <RepairTool ${amounts} range="${i.range}" barrelpos="${i.barrelPos}"
+              repairthroughholes="${i.repairThroughHoles ? 'true' : 'false'}"
+              ignorecharacters="${i.ignoreCharacters ? 'true' : 'false'}"
+              hititems="${i.hitItems ? 'true' : 'false'}"
+              repairmultiple="${i.repairMultiple ? 'true' : 'false'}"
+              combatpriority="3" targetforce="10">${fuel}
+    <RequiredSkill identifier="mechanical" level="${i.skillLevel}" />
+    <ParticleEmitter particle="weld" particlespersecond="50" copyentityangle="true" />
+  </RepairTool>
+${priceBlock(i.basePrice, i.storeMultiplier, i.minAvailable)}</Item>`
+}
 
 /** 找到 mod 里承载物品的文件；找不到则用 filelist 里第一条 Item 记录，再退回默认路径。 */
 async function resolveItemFile(modDir: string, explicit: string): Promise<string> {
@@ -375,7 +439,7 @@ export function registerItemTools(ctx: Context, config: BarotraumaPluginConfig):
     name: 'barotrauma_gen_item',
     description:
       '生成潜渊症物品并追加进内容包：远程武器（自动配套弹药与弹丸）、近战武器、弹药、消耗品（医疗）、' +
-      '穿戴装备、材料。会自动写进 Items XML 并在 filelist.xml 登记该文件，同时把名称/描述写进本地化文件。' +
+      '穿戴装备、工具（焊接/灭火一类）、材料。会自动写进 Items XML 并在 filelist.xml 登记该文件，同时把名称/描述写进本地化文件。' +
       '所有字段照抄本机真实 mod（不存在 <Magazine>，弹药按 ItemContainer + SpawnItem 建模）。',
     parameters: {
       modDir: { type: 'string', required: true, description: 'mod 根目录（含 filelist.xml 的目录）。' },
@@ -402,6 +466,19 @@ export function registerItemTools(ctx: Context, config: BarotraumaPluginConfig):
       roundIdentifier: { type: 'string', description: '弹丸 identifier，默认 <Identifier>Round。' },
       shotsPerMagazine: { type: 'integer', description: '每弹匣发数，默认 20。' },
       skillLevel: { type: 'integer', description: 'RequiredSkill level，武器默认 40、医疗默认 40。' },
+      // ── 以下仅 kind="tool" 使用；默认值照原版 input.xml 的 weldingtool ──
+      range: { type: 'number', description: '（tool）RepairTool 的 range，默认 150（焊接工具 150，灭火器 500）。' },
+      barrelPos: { type: 'string', description: '（tool）RepairTool 的 barrelpos，默认 "35,12"。' },
+      structureFixAmount: { type: 'number', description: '（tool）structurefixamount：每秒修复结构的量，默认 2.0。' },
+      fireDamage: { type: 'number', description: '（tool）firedamage：对 ballast flora 的伤害，默认 10.0。' },
+      extinguishAmount: { type: 'number', description: '（tool）extinguishamount：每秒灭火量，默认 0（不写该属性）；灭火器用 60。' },
+      waterAmount: { type: 'number', description: '（tool）wateramount：每秒给种植箱供水，默认 0（不写该属性）。' },
+      repairThroughHoles: { type: 'boolean', description: '（tool）repairthroughholes，默认 false；灭火器为 true。' },
+      ignoreCharacters: { type: 'boolean', description: '（tool）ignorecharacters，默认 false；灭火器为 true。' },
+      hitItems: { type: 'boolean', description: '（tool）hititems：能否修复门，默认 true；灭火器为 false。' },
+      repairMultiple: { type: 'boolean', description: '（tool）repairmultiple：能否一次修多个，默认 true。' },
+      fuelTag: { type: 'string', description: '（tool）需要装在工具里的燃料 tag，默认 "weldingtoolfuel,oxygensource"；传空字符串表示不需要燃料（如灭火器）。' },
+      toolSkillLevel: { type: 'integer', description: '（tool）RepairTool 自带的 RequiredSkill 等级，默认 50。' },
       damage: { type: 'array', items: { type: 'string' }, description: '伤害组合，格式 ["gunshotwound:24","bleeding:16"]；不给则用该种类的默认值。' },
       reduce: { type: 'array', items: { type: 'string' }, description: '消耗品消除的 affliction，格式 ["bleeding:1.5","burn:0.75"]。' },
       projectile: { type: 'string', enum: ['propelled', 'simple'], description: '弹丸类型，默认 propelled（照抄 SmartPistolRound）。' },
@@ -636,6 +713,38 @@ export function registerItemTools(ctx: Context, config: BarotraumaPluginConfig):
           // 注意：<sprite> 的 limb= 是穿戴部位（Torso/Head/LeftHand…），不是护甲值
           armorValueText: asString(args.armorSlot).trim() || 'Torso',
           damages,
+          basePrice,
+          storeMultiplier,
+          minAvailable,
+        }))
+      } else if (kind === 'tool') {
+        const customTexture = asString(args.texture).trim()
+        const iconTexture = customTexture !== '' ? customTexture : 'Content/Items/InventoryIconAtlas.png'
+        const iconSourceRect = customTexture !== ''
+          ? (asString(args.sourceRect).trim() || '0,0,64,64')
+          : '0,0,64,64'
+        blocks.push(toolXml({
+          identifier,
+          sprite,
+          iconTexture,
+          iconSourceRect,
+          scale: scale || '0.5',
+          tags: asString(args.tags).trim() || 'smallitem,tool,weldingequipment',
+          category: asString(args.category).trim() || 'Equipment',
+          bodyWidth: Math.max(1, Math.trunc(asNumber(args.bodyWidth, 150))),
+          bodyHeight: Math.max(1, Math.trunc(asNumber(args.bodyHeight, 60))),
+          range: asNumber(args.range, 150),
+          barrelPos: asString(args.barrelPos).trim() || '35,12',
+          structureFixAmount: asNumber(args.structureFixAmount, 2),
+          fireDamage: asNumber(args.fireDamage, 10),
+          extinguishAmount: asNumber(args.extinguishAmount, 0),
+          waterAmount: asNumber(args.waterAmount, 0),
+          repairThroughHoles: asBoolean(args.repairThroughHoles, false),
+          ignoreCharacters: asBoolean(args.ignoreCharacters, false),
+          hitItems: asBoolean(args.hitItems, true),
+          repairMultiple: asBoolean(args.repairMultiple, true),
+          fuelTag: asString(args.fuelTag, 'weldingtoolfuel,oxygensource'),
+          skillLevel: Math.max(0, Math.trunc(asNumber(args.toolSkillLevel, 50))),
           basePrice,
           storeMultiplier,
           minAvailable,

@@ -857,7 +857,15 @@ export function registerValidateTools(ctx: Context, config: BarotraumaPluginConf
         // 弹药配套。注意 `<RequiredItem>`（单数）与 `<RequiredItems>`（复数）**都是合法别名**
         // （官方 Item 页；本机 ACAWeaponsExpand/Items/Heavy_Weapons.xml 用的是单数）。
         // 早先只写复数，导致该检查对单数写法**永不触发**。
-        if (/<RequiredItems?\b[^>]*\btype\s*=\s*"Contained"/i.test(effective) && !/<ItemContainer\b/i.test(effective)) {
+        //
+        // 还必须要求**确实有 `<RangedWeapon>`**：`<RequiredItems type="Contained">` 有两种语义 ——
+        // 武器的弹药，和**工具需要的燃料**（原版 weldingtool 就把它写在 `<RepairTool>` 里，
+        // 那种情况本来就不需要 `<ItemContainer>`）。不区分会把焊接工具类物品全部误报。
+        if (
+          /<RangedWeapon\b/i.test(effective) &&
+          /<RequiredItems?\b[^>]*\btype\s*=\s*"Contained"/i.test(effective) &&
+          !/<ItemContainer\b/i.test(effective)
+        ) {
           issues.push({
             severity: 'major',
             code: 'AMMO_CONTAINER_MISSING',
