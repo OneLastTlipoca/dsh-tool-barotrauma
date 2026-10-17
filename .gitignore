@@ -1,0 +1,31 @@
+# ── 依赖与构建产物（不入库，clone 后需 pnpm install && pnpm build）──
+node_modules/
+lib/
+dist/
+*.tsbuildinfo
+
+# ── 开发期临时目录：测试夹具、探针产物、抓取的中间数据、合作者工具的解包副本 ──
+# 体积大（十几 MB），且含第三方代码/二进制，不该进版本库
+.scratch/
+
+# ── 打包与分发产物 ──
+vendor/
+*.tgz
+publish/
+validation-report.md
+plan.json
+
+# ── 凭据：永远不要提交 ──
+.env
+.env.*
+*.pem
+*.key
+.npmrc
+.credentials*
+
+# ── 编辑器 / 系统 ──
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store

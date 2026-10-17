@@ -1,0 +1,1485 @@
+{
+  "batch": 2,
+  "source": "https://regalis11.github.io/BaroModDoc/ItemComponents/",
+  "components": [
+    {
+      "element": "ModuloComponent",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/ModuloComponent.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Modulus",
+          "type": "float",
+          "default": "1",
+          "description": "The modulus of the operation. Must be non-zero."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "MotionSensor",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/MotionSensor.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "MotionDetected",
+          "type": "bool",
+          "default": "false",
+          "description": "Has the item currently detected movement. Intended to be used by StatusEffect conditionals (setting this value in XML has no effect)."
+        },
+        {
+          "name": "Target",
+          "type": "TargetType",
+          "default": "Any",
+          "description": "Which kind of targets can trigger the sensor?"
+        },
+        {
+          "name": "TargetCharacters",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Does the sensor react only to certain characters (species names, groups or tags)? Doesn't have an effect, if the Target Type is incorrect."
+        },
+        {
+          "name": "IgnoreDead",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the sensor ignore the bodies of dead characters?"
+        },
+        {
+          "name": "RangeX",
+          "type": "float",
+          "default": "0",
+          "description": "Horizontal detection range."
+        },
+        {
+          "name": "RangeY",
+          "type": "float",
+          "default": "0",
+          "description": "Vertical movement detection range."
+        },
+        {
+          "name": "DetectOffset",
+          "type": "Vector2",
+          "default": "\"0,0\"",
+          "description": "The position to detect the movement at relative to the item. For example, 0,100 would detect movement 100 units above the item."
+        },
+        {
+          "name": "UpdateInterval",
+          "type": "float",
+          "default": "0.1",
+          "description": "How often the sensor checks if there's something moving near it. Higher values are better for performance."
+        },
+        {
+          "name": "MaxOutputLength",
+          "type": "int",
+          "default": "200",
+          "description": "The maximum length of the output strings. Warning: Large values can lead to large memory usage or networking issues."
+        },
+        {
+          "name": "Output",
+          "type": "string",
+          "default": "\"1\"",
+          "description": "The signal the item outputs when it has detected movement."
+        },
+        {
+          "name": "FalseOutput",
+          "type": "string",
+          "default": "\"0\"",
+          "description": "The signal the item outputs when it has not detected movement."
+        },
+        {
+          "name": "MinimumVelocity",
+          "type": "float",
+          "default": "0",
+          "description": "How fast the objects within the detector's range have to be moving (in m/s)."
+        },
+        {
+          "name": "DetectOwnMotion",
+          "type": "bool",
+          "default": "true",
+          "description": "Should the sensor trigger when the item itself moves."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "NameTag",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/NameTag.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "WrittenName",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Name written on the tag."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "NotComponent",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/NotComponent.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "ContinuousOutput",
+          "type": "bool",
+          "default": "false",
+          "description": "When enabled, the component continuously outputs \"1\" when it's not receiving a signal."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "OscillatorComponent",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/OscillatorComponent.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "OutputType",
+          "type": "WaveType",
+          "default": "Pulse",
+          "description": "What kind of a signal the item outputs. Pulse: periodically sends out a signal of 1. Sawtooth: sends out a periodic wave that increases linearly from 0 to 1. Sine: sends out a sine wave oscillating be..."
+        },
+        {
+          "name": "Frequency",
+          "type": "float",
+          "default": "1",
+          "description": "How fast the signal oscillates, or how fast the pulses are sent (in Hz)."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "OutpostTerminal",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/OutpostTerminal.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent；该页无属性表"
+    },
+    {
+      "element": "OxygenDetector",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/OxygenDetector.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent；该页无属性表"
+    },
+    {
+      "element": "Pickable",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Pickable.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [],
+      "children": [
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent；该页无属性表"
+    },
+    {
+      "element": "Door",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Door.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "IsStuck",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "Stuck",
+          "type": "float",
+          "default": "0",
+          "description": "How badly stuck the door is (in percentages). If the percentage reaches 100, the door needs to be cut open to make it usable again."
+        },
+        {
+          "name": "OpeningSpeed",
+          "type": "float",
+          "default": "3",
+          "description": "How quickly the door opens."
+        },
+        {
+          "name": "ClosingSpeed",
+          "type": "float",
+          "default": "3",
+          "description": "How quickly the door closes."
+        },
+        {
+          "name": "ToggleCoolDown",
+          "type": "float",
+          "default": "1",
+          "description": "The door cannot be opened/closed during this time after it has been opened/closed by another character."
+        },
+        {
+          "name": "Window",
+          "type": "Rectangle",
+          "default": "\"0.0,0.0,0.0,0.0\"",
+          "description": "Position and size of the window on the door. The upper left corner is 0,0. Set the width and height to 0 if you don't want the door to have a window."
+        },
+        {
+          "name": "IsOpen",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the door currently open."
+        },
+        {
+          "name": "HasIntegratedButtons",
+          "type": "bool",
+          "default": "false",
+          "description": "If the door has integrated buttons, it can be opened by interacting with it directly (instead of using buttons wired to it)."
+        },
+        {
+          "name": "ToggleWhenClicked",
+          "type": "bool",
+          "default": "true",
+          "description": "If the door has integrated buttons, should clicking on it perform the default action of opening the door? Can be used in conjunction with the \"activate_out\" output to pass a signal to a circuit withou..."
+        },
+        {
+          "name": "Impassable",
+          "type": "bool",
+          "default": "false",
+          "description": "Characters and items cannot pass through impassable doors. Useful for things such as ducts that should only let water and air through."
+        },
+        {
+          "name": "UseBetweenOutpostModules",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "BotsShouldKeepOpen",
+          "type": "bool",
+          "default": "false",
+          "description": "If true, bots won't try to close this door behind them."
+        }
+      ],
+      "children": [
+        "Upgrade",
+        "RequiredItem",
+        "Sprite",
+        "WeldedSprite",
+        "BrokenSprite",
+        "sound",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Pickable、ItemComponent"
+    },
+    {
+      "element": "Holdable",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Holdable.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "CanPush",
+          "type": "bool",
+          "default": "true",
+          "description": "Is the item currently able to push characters around? True by default. Only valid if blocksplayers is set to true."
+        },
+        {
+          "name": "Attached",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the item currently attached to a wall (only valid if Attachable is set to true)."
+        },
+        {
+          "name": "Aimable",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the item be pointed to a specific direction or do the characters always hold it in a static pose."
+        },
+        {
+          "name": "CameraAimOffset",
+          "type": "float",
+          "default": "0",
+          "description": "Camera offset to apply when aiming this item. Only valid if Aimable is set to true."
+        },
+        {
+          "name": "ControlPose",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the character adjust its pose when aiming with the item. Most noticeable underwater, where the character will rotate its entire body to face the direction the item is aimed at."
+        },
+        {
+          "name": "UseHandRotationForHoldAngle",
+          "type": "bool",
+          "default": "false",
+          "description": "Use the hand rotation instead of torso rotation for the item hold angle. Enable this if you want the item just to follow with the arm when not aiming instead of forcing the arm to a hold pose."
+        },
+        {
+          "name": "Attachable",
+          "type": "bool",
+          "default": "false",
+          "description": "Can the item be attached to walls."
+        },
+        {
+          "name": "Reattachable",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the item be reattached to walls after it has been deattached (only valid if Attachable is set to true)."
+        },
+        {
+          "name": "LimitedAttachable",
+          "type": "bool",
+          "default": "false",
+          "description": "Can the item only be attached in limited amount? Uses permanent stat values to check for legibility."
+        },
+        {
+          "name": "AttachesToFloor",
+          "type": "bool",
+          "default": "false",
+          "description": "When enabled, the item can only be attached to a position where it touches the floor."
+        },
+        {
+          "name": "AllowAttachInsideDoors",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the item be attached inside doors?"
+        },
+        {
+          "name": "DisallowAttachingOverTags",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "AttachedByDefault",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the item be attached to a wall by default when it's placed in the submarine editor."
+        },
+        {
+          "name": "HoldPos",
+          "type": "Vector2",
+          "default": "\"0.0,0.0\"",
+          "description": "The position the character holds the item at (in pixels, as an offset from the character's shoulder). For example, a value of 10,-100 would make the character hold the item 100 pixels below the should..."
+        },
+        {
+          "name": "AimPos",
+          "type": "Vector2",
+          "default": "\"0.0,0.0\"",
+          "description": "The position the character holds the item at when aiming (in pixels, as an offset from the character's shoulder). Works similarly as HoldPos, except that the position is rotated according to the direc..."
+        },
+        {
+          "name": "HoldAngle",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "AimAngle",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "SwingAmount",
+          "type": "Vector2",
+          "default": "\"0.0,0.0\"",
+          "description": ""
+        },
+        {
+          "name": "SwingSpeed",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "SwingWhenHolding",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "SwingWhenAiming",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "SwingWhenUsing",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "DisableHeadRotation",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "DisableWhenRangedWeaponEquipped",
+          "type": "bool",
+          "default": "false",
+          "description": "If true, this item can't be used if the character is also holding a ranged weapon."
+        },
+        {
+          "name": "SpriteDepthWhenDropped",
+          "type": "float",
+          "default": "0.55",
+          "description": "Sprite depth that's used when the item is NOT attached to a wall."
+        },
+        {
+          "name": "MsgWhenDropped",
+          "type": "string",
+          "default": "\"\"",
+          "description": "A text displayed next to the item when it's been dropped on the floor (not attached to a wall)."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：Pickable、ItemComponent"
+    },
+    {
+      "element": "MeleeWeapon",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/MeleeWeapon.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Range",
+          "type": "float",
+          "default": "0",
+          "description": "An estimation of how close the item has to be to the target for it to hit. Used by AI characters to determine when they're close enough to hit a target."
+        },
+        {
+          "name": "Reload",
+          "type": "float",
+          "default": "0.5",
+          "description": "How long the user has to wait before they can hit with the weapon again (in seconds)."
+        },
+        {
+          "name": "AllowHitMultiple",
+          "type": "bool",
+          "default": "false",
+          "description": "Can the weapon hit multiple targets per swing."
+        },
+        {
+          "name": "HitOnlyCharacters",
+          "type": "bool",
+          "default": "false",
+          "description": "Disable to make the weapon ignore all hit effects when it collides with walls, doors, or other items."
+        },
+        {
+          "name": "Swing",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "SwingPos",
+          "type": "Vector2",
+          "default": "\"2.0, 0.0\"",
+          "description": ""
+        },
+        {
+          "name": "SwingForce",
+          "type": "Vector2",
+          "default": "\"3.0, -1.0\"",
+          "description": ""
+        }
+      ],
+      "children": [
+        "Attack"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Holdable、Pickable、ItemComponent"
+    },
+    {
+      "element": "Throwable",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Throwable.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "ThrowForce",
+          "type": "float",
+          "default": "1",
+          "description": "The impulse applied to the physics body of the item when thrown. Higher values make the item be thrown faster."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：Holdable、Pickable、ItemComponent"
+    },
+    {
+      "element": "IdCard",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/IdCard.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "TeamID",
+          "type": "CharacterTeamType",
+          "default": "None",
+          "description": ""
+        },
+        {
+          "name": "SubmarineSpecificID",
+          "type": "int",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "OwnerTags",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "Description",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerName",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerNameLocalized",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerJobId",
+          "type": "Identifier",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerHairIndex",
+          "type": "int",
+          "default": "-1",
+          "description": ""
+        },
+        {
+          "name": "OwnerBeardIndex",
+          "type": "int",
+          "default": "-1",
+          "description": ""
+        },
+        {
+          "name": "OwnerMoustacheIndex",
+          "type": "int",
+          "default": "-1",
+          "description": ""
+        },
+        {
+          "name": "OwnerFaceAttachmentIndex",
+          "type": "int",
+          "default": "-1",
+          "description": ""
+        },
+        {
+          "name": "OwnerHairColor",
+          "type": "Color",
+          "default": "\"#ffffff\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerFacialHairColor",
+          "type": "Color",
+          "default": "\"#ffffff\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerSkinColor",
+          "type": "Color",
+          "default": "\"#ffffff\"",
+          "description": ""
+        },
+        {
+          "name": "OwnerSheetIndex",
+          "type": "Vector2",
+          "default": "\"0,0\"",
+          "description": ""
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：Pickable、ItemComponent"
+    },
+    {
+      "element": "Planter",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Planter.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Fertilizer",
+          "type": "float",
+          "default": "0",
+          "description": "How much fertilizer the planter has."
+        },
+        {
+          "name": "FertilizerCapacity",
+          "type": "float",
+          "default": "100",
+          "description": "How much fertilizer can the planter hold."
+        }
+      ],
+      "children": [
+        "PlantSlot",
+        "SuitableFertilizer",
+        "SuitableSeed"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Pickable、ItemComponent"
+    },
+    {
+      "element": "Wearable",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Wearable.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "AllowUseWhenWorn",
+          "type": "bool",
+          "default": "false",
+          "description": "Can the item be used (assuming it has components that are usable in some way) when worn."
+        }
+      ],
+      "children": [
+        "sprite"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Pickable、ItemComponent"
+    },
+    {
+      "element": "Powered",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Powered.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "MinVoltage",
+          "type": "float",
+          "default": "0.5",
+          "description": "The minimum voltage required for the device to function. The voltage is calculated as power / powerconsumption, meaning that a device with a power consumption of 1000 kW would need at least 500 kW of..."
+        },
+        {
+          "name": "PowerConsumption",
+          "type": "float",
+          "default": "0",
+          "description": "How much power the device draws (or attempts to draw) from the electrical grid when active."
+        },
+        {
+          "name": "IsActive",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the device currently active. Inactive devices don't consume power."
+        },
+        {
+          "name": "CurrPowerConsumption",
+          "type": "float",
+          "default": "0",
+          "description": "The current power consumption of the device. Intended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        },
+        {
+          "name": "Voltage",
+          "type": "float",
+          "default": "0",
+          "description": "The current voltage of the item (calculated as power consumption / available power). Intended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        },
+        {
+          "name": "VulnerableToEMP",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the item be damaged by electomagnetic pulses."
+        }
+      ],
+      "children": [
+        "GuiFrame"
+      ],
+      "notes": "无用途说明句；继承（also supports）：ItemComponent"
+    },
+    {
+      "element": "Deconstructor",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Deconstructor.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "DeconstructItemsSimultaneously",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "DeconstructionSpeed",
+          "type": "float",
+          "default": "1",
+          "description": ""
+        },
+        {
+          "name": "ActivateButtonText",
+          "type": "string",
+          "default": "\"DeconstructorDeconstruct\"",
+          "description": ""
+        },
+        {
+          "name": "InfoText",
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "InfoAreaWidth",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "ShowOutput",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "sound",
+        "poweronsound",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "ElectricalDischarger",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/ElectricalDischarger.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Range",
+          "type": "float",
+          "default": "500",
+          "description": "How far the discharge can travel from the item."
+        },
+        {
+          "name": "RangeMultiplierInWalls",
+          "type": "float",
+          "default": "25",
+          "description": "How much further can the discharge be carried when moving across walls."
+        },
+        {
+          "name": "RaycastRange",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "Duration",
+          "type": "float",
+          "default": "0.25",
+          "description": "The duration of an individual discharge (in seconds)."
+        },
+        {
+          "name": "Reload",
+          "type": "float",
+          "default": "0.25",
+          "description": ""
+        },
+        {
+          "name": "OutdoorsOnly",
+          "type": "bool",
+          "default": "false",
+          "description": "If set to true, the discharge cannot travel inside the submarine nor shock anyone inside."
+        },
+        {
+          "name": "IgnoreUser",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        }
+      ],
+      "children": [
+        "Attack",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "Engine",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Engine.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "MaxForce",
+          "type": "float",
+          "default": "500",
+          "description": "The amount of force exerted on the submarine when the engine is operating at full power."
+        },
+        {
+          "name": "PropellerPos",
+          "type": "Vector2",
+          "default": "\"0.0,0.0\"",
+          "description": "The position of the propeller as an offset from the item's center (in pixels). Determines where the particles spawn and the position that causes characters to take damage from the engine if the Propel..."
+        },
+        {
+          "name": "DisablePropellerDamage",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        }
+      ],
+      "children": [
+        "Upgrade",
+        "GuiFrame",
+        "sound",
+        "propellerdamage"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "Fabricator",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Fabricator.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "FabricationSpeed",
+          "type": "float",
+          "default": "1",
+          "description": ""
+        },
+        {
+          "name": "SkillRequirementMultiplier",
+          "type": "float",
+          "default": "1",
+          "description": ""
+        },
+        {
+          "name": "AmountToFabricate",
+          "type": "int",
+          "default": "1",
+          "description": ""
+        },
+        {
+          "name": "CreateButtonText",
+          "type": "string",
+          "default": "\"FabricatorCreate\"",
+          "description": ""
+        },
+        {
+          "name": "FabricationLimitReachedText",
+          "type": "string",
+          "default": "\"vendingmachine.outofstock\"",
+          "description": ""
+        },
+        {
+          "name": "ShowSortByDropdown",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "ShowAvailableOnlyTickBox",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "ShowCategoryButtons",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "sound",
+        "poweronsound",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "LightComponent",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/LightComponent.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Range",
+          "type": "float",
+          "default": "100",
+          "description": "The range of the emitted light. Higher values are more performance-intensive."
+        },
+        {
+          "name": "CastShadows",
+          "type": "bool",
+          "default": "true",
+          "description": "Should structures cast shadows when light from this light source hits them. Disabling shadows increases the performance of the game, and is recommended for lights with a short range. Lights that are s..."
+        },
+        {
+          "name": "DrawBehindSubs",
+          "type": "bool",
+          "default": "false",
+          "description": "Lights drawn behind submarines don't cast any shadows and are much faster to draw than shadow-casting lights. It's recommended to enable this on decorative lights outside the submarine's hull."
+        },
+        {
+          "name": "IsOn",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the light currently on."
+        },
+        {
+          "name": "Flicker",
+          "type": "float",
+          "default": "0",
+          "description": "How heavily the light flickers. 0 = no flickering, 1 = the light will alternate between completely dark and full brightness."
+        },
+        {
+          "name": "FlickerSpeed",
+          "type": "float",
+          "default": "1",
+          "description": "How fast the light flickers."
+        },
+        {
+          "name": "PulseFrequency",
+          "type": "float",
+          "default": "0",
+          "description": "How rapidly the light pulsates (in Hz). 0 = no blinking."
+        },
+        {
+          "name": "PulseAmount",
+          "type": "float",
+          "default": "0",
+          "description": "How much light pulsates (in Hz). 0 = not at all, 1 = alternates between full brightness and off."
+        },
+        {
+          "name": "BlinkFrequency",
+          "type": "float",
+          "default": "0",
+          "description": "How rapidly the light blinks on and off (in Hz). 0 = no blinking."
+        },
+        {
+          "name": "LightColor",
+          "type": "Color",
+          "default": "\"255,255,255,255\"",
+          "description": "The color of the emitted light (R,G,B,A)."
+        },
+        {
+          "name": "IgnoreContinuousToggle",
+          "type": "bool",
+          "default": "false",
+          "description": "If enabled, the component will ignore continuous signals received in the toggle input (i.e. a continuous signal will only toggle it once)."
+        },
+        {
+          "name": "AlphaBlend",
+          "type": "bool",
+          "default": "true",
+          "description": "Should the light sprite be drawn on the item using alpha blending, in addition to being rendered in the light map? Can be used to make the light sprite stand out more."
+        },
+        {
+          "name": "LightOffset",
+          "type": "Vector2",
+          "default": "\"0,0\"",
+          "description": "Offset of the light from the position of the item (in pixels)."
+        },
+        {
+          "name": "LightSpriteScale",
+          "type": "float",
+          "default": "1",
+          "description": "The scale of the light sprite."
+        }
+      ],
+      "children": [
+        "LightTexture",
+        "sprite"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "MiniMap",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/MiniMap.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "RequireWaterDetectors",
+          "type": "bool",
+          "default": "false",
+          "description": "Does the machine require inputs from water detectors in order to show the water levels inside rooms."
+        },
+        {
+          "name": "RequireOxygenDetectors",
+          "type": "bool",
+          "default": "true",
+          "description": "Does the machine require inputs from oxygen detectors in order to show the oxygen levels inside rooms."
+        },
+        {
+          "name": "ShowHullIntegrity",
+          "type": "bool",
+          "default": "true",
+          "description": "Should damaged walls be displayed by the machine."
+        },
+        {
+          "name": "EnableHullStatus",
+          "type": "bool",
+          "default": "true",
+          "description": "Enable hull status mode."
+        },
+        {
+          "name": "EnableElectricalView",
+          "type": "bool",
+          "default": "true",
+          "description": "Enable electrical view mode."
+        },
+        {
+          "name": "EnableItemFinder",
+          "type": "bool",
+          "default": "true",
+          "description": "Enable item finder mode."
+        },
+        {
+          "name": "IsUsableOutsidePlayerSub",
+          "type": "bool",
+          "default": "false",
+          "description": "If this item is portable, should it be usable outside the player submarine?"
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "AlternativeLayout",
+        "poweronsound"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "OxygenGenerator",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/OxygenGenerator.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "GeneratedAmount",
+          "type": "float",
+          "default": "400",
+          "description": "How much oxygen the machine generates when operating at full power."
+        }
+      ],
+      "children": [
+        "poweronsound",
+        "sound",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "PowerContainer",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/PowerContainer.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "IndicatorPosition",
+          "type": "Vector2",
+          "default": "\"0,0\"",
+          "description": "The position of the progress bar indicating the charge of the item. In pixels as an offset from the upper left corner of the sprite."
+        },
+        {
+          "name": "IndicatorSize",
+          "type": "Vector2",
+          "default": "\"0,0\"",
+          "description": "The size of the progress bar indicating the charge of the item (in pixels)."
+        },
+        {
+          "name": "IsHorizontal",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the progress bar indicating the charge of the item fill up horizontally or vertically."
+        },
+        {
+          "name": "MaxOutPut",
+          "type": "float",
+          "default": "10",
+          "description": "Maximum output of the device when fully charged (kW)."
+        },
+        {
+          "name": "Capacity",
+          "type": "float",
+          "default": "10",
+          "description": "The maximum capacity of the device (kW * min). For example, a value of 1000 means the device can output 100 kilowatts of power for 10 minutes, or 1000 kilowatts for 1 minute."
+        },
+        {
+          "name": "Charge",
+          "type": "float",
+          "default": "0",
+          "description": "The current charge of the device."
+        },
+        {
+          "name": "MaxRechargeSpeed",
+          "type": "float",
+          "default": "10",
+          "description": "How fast the device can be recharged. For example, a recharge speed of 100 kW and a capacity of 1000 kW*min would mean it takes 10 minutes to fully charge the device."
+        },
+        {
+          "name": "RechargeSpeed",
+          "type": "float",
+          "default": "0",
+          "description": "The current recharge speed of the device."
+        },
+        {
+          "name": "ExponentialRechargeSpeed",
+          "type": "bool",
+          "default": "false",
+          "description": "If true, the recharge speed (and power consumption) of the device goes up exponentially as the recharge rate is increased."
+        },
+        {
+          "name": "Efficiency",
+          "type": "float",
+          "default": "0.95",
+          "description": "The amount of power you can get out of a item relative to the amount of power that's put into it."
+        },
+        {
+          "name": "FlipIndicator",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the progress bar indicating the charge be flipped to fill from the other side."
+        },
+        {
+          "name": "RechargeWarningIndicatorLow",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "RechargeWarningIndicatorHigh",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "PowerTransfer",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/PowerTransfer.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "CanBeOverloaded",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the item be damaged if too much power is supplied to the power grid."
+        },
+        {
+          "name": "OverloadVoltage",
+          "type": "float",
+          "default": "2",
+          "description": "How much power has to be supplied to the grid relative to the load before item starts taking damage. E.g. a value of 2 means that the grid has to be receiving twice as much power as the devices in the..."
+        },
+        {
+          "name": "FireProbability",
+          "type": "float",
+          "default": "0.15",
+          "description": "The probability for a fire to start when the item breaks."
+        },
+        {
+          "name": "Overload",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the item currently overloaded. Intended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        }
+      ],
+      "children": [],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "PowerDistributor",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/PowerDistributor.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [],
+      "children": [
+        "GuiFrame",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：PowerTransfer、Powered、ItemComponent；该页无属性表"
+    },
+    {
+      "element": "RelayComponent",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/RelayComponent.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "MaxPower",
+          "type": "float",
+          "default": "1000",
+          "description": "The maximum amount of power that can pass through the item."
+        },
+        {
+          "name": "IsOn",
+          "type": "bool",
+          "default": "true",
+          "description": "Can the relay currently pass power and signals through it."
+        }
+      ],
+      "children": [
+        "GuiFrame"
+      ],
+      "notes": "无用途说明句；继承（also supports）：PowerTransfer、Powered、ItemComponent"
+    },
+    {
+      "element": "Pump",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Pump.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "FlowPercentage",
+          "type": "float",
+          "default": "0",
+          "description": "How fast the item is currently pumping water (-100 = full speed out, 100 = full speed in). Intended to be used by StatusEffect conditionals (setting this value in XML has no effect)."
+        },
+        {
+          "name": "MaxFlow",
+          "type": "float",
+          "default": "80",
+          "description": "How fast the item pumps water in/out when operating at 100%."
+        },
+        {
+          "name": "Disabled",
+          "type": "bool",
+          "default": "false",
+          "description": "If true, the pump is unable to pump water."
+        },
+        {
+          "name": "IsOn",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "CanCauseLethalPressure",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "sound",
+        "PumpInEmitter",
+        "PumpOutEmitter",
+        "StatusEffect"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "Reactor",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Reactor.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "PowerOn",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "LastUserWasPlayer",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "MaxPowerOutput",
+          "type": "float",
+          "default": "10000",
+          "description": "How much power (kW) the reactor generates when operating at full capacity."
+        },
+        {
+          "name": "MeltdownDelay",
+          "type": "float",
+          "default": "120",
+          "description": "How long the temperature has to stay critical until a meltdown occurs."
+        },
+        {
+          "name": "FireDelay",
+          "type": "float",
+          "default": "30",
+          "description": "How long the temperature has to stay critical until the reactor catches fire."
+        },
+        {
+          "name": "Temperature",
+          "type": "float",
+          "default": "0",
+          "description": "Current temperature of the reactor (0% - 100%). Indended to be used by StatusEffect conditionals."
+        },
+        {
+          "name": "FissionRate",
+          "type": "float",
+          "default": "0",
+          "description": "Current fission rate of the reactor (0% - 100%). Intended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        },
+        {
+          "name": "TurbineOutput",
+          "type": "float",
+          "default": "0",
+          "description": "Current turbine output of the reactor (0% - 100%). Intended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        },
+        {
+          "name": "FuelConsumptionRate",
+          "type": "float",
+          "default": "0.2",
+          "description": "How fast the condition of the contained fuel rods deteriorates per second."
+        },
+        {
+          "name": "TemperatureCritical",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the temperature currently critical. Intended to be used by StatusEffect conditionals (setting the value from XML has no effect)."
+        },
+        {
+          "name": "AutoTemp",
+          "type": "bool",
+          "default": "false",
+          "description": "Is the automatic temperature control currently on. Indended to be used by StatusEffect conditionals (setting the value from XML is not recommended)."
+        },
+        {
+          "name": "AvailableFuel",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "Load",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "TargetFissionRate",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "TargetTurbineOutput",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "CorrectTurbineOutput",
+          "type": "float",
+          "default": "0",
+          "description": ""
+        },
+        {
+          "name": "ExplosionDamagesOtherSubs",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        }
+      ],
+      "children": [
+        "StatusEffect",
+        "GuiFrame",
+        "GraphLine",
+        "FissionRateMeter",
+        "TurbineOutputMeter",
+        "MeterPointer",
+        "SectorSprite",
+        "TempMeterFrame",
+        "TempMeterBar",
+        "TempRangeIndicator",
+        "RequiredSkill",
+        "RequiredItem",
+        "sound"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    },
+    {
+      "element": "Sonar",
+      "url": "https://regalis11.github.io/BaroModDoc/ItemComponents/Sonar.html",
+      "httpStatus": 200,
+      "purpose": "",
+      "attributes": [
+        {
+          "name": "Range",
+          "type": "float",
+          "default": "Same as DefaultSonarRange",
+          "description": "The maximum range of the sonar."
+        },
+        {
+          "name": "DetectSubmarineWalls",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the sonar display the walls of the submarine it is inside."
+        },
+        {
+          "name": "UseTransducers",
+          "type": "bool",
+          "default": "false",
+          "description": "Does the sonar have to be connected to external transducers to work."
+        },
+        {
+          "name": "CenterOnTransducers",
+          "type": "bool",
+          "default": "false",
+          "description": "Should the sonar view be centered on the transducers or the submarine's center of mass. Only has an effect if UseTransducers is enabled."
+        },
+        {
+          "name": "HasMineralScanner",
+          "type": "bool",
+          "default": "false",
+          "description": "Does the sonar have mineral scanning mode."
+        },
+        {
+          "name": "UseMineralScanner",
+          "type": "bool",
+          "default": "true",
+          "description": ""
+        },
+        {
+          "name": "RightLayout",
+          "type": "bool",
+          "default": "false",
+          "description": ""
+        }
+      ],
+      "children": [
+        "GuiFrame",
+        "sound",
+        "StatusEffect",
+        "PingCircle",
+        "DirectionalPingCircle",
+        "ScreenOverlay",
+        "ScreenBackground",
+        "DirectionalPingBackground",
+        "DirectionalPingButton",
+        "Blip",
+        "LineSprite",
+        "icon",
+        "LightComponent"
+      ],
+      "notes": "无用途说明句；继承（also supports）：Powered、ItemComponent"
+    }
+  ]
+}

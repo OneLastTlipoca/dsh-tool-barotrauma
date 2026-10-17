@@ -1,0 +1,34 @@
+{
+  // dsh-tool-barotrauma — 构建配置。
+  //
+  // 本机情况：@deepseek-ai/* 是 DSH 私有的 rc 包，不在 npm registry 上，
+  // 只存在于 DSH profile 的 node_modules 里（C:\Users\OtobeSpica\.dsh\profiles\node_modules）。
+  // 因此类型解析用 `paths` 直指该目录，**不把它装成依赖**：
+  //   - 类型检查/编译期：走 paths
+  //   - 运行期          ：插件装进 profile 后，Node 从 profile 的 node_modules 解析同名包
+  // 换句话说，lib/*.js 里的 `import ... from '@deepseek-ai/dsh-tools'` 保持裸说明符原样输出。
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "lib",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@deepseek-ai/cordis": ["C:/Users/OtobeSpica/.dsh/profiles/node_modules/@deepseek-ai/cordis"],
+      "@deepseek-ai/dsh-tools": ["C:/Users/OtobeSpica/.dsh/profiles/node_modules/@deepseek-ai/dsh-tools"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

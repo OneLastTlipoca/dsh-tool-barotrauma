@@ -1,0 +1,9 @@
+# PowerShell 脚本带 UTF-8 BOM（PS 5.1 解析中文必须），
+# 声明为 -text 防止 git 换行/BOM 归一转坏它
+*.ps1 -text
+
+*.png binary
+*.jpg binary
+*.zip binary
+
+* text=auto eol=lf
