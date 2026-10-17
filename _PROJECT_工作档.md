@@ -5,13 +5,13 @@
 ## 路径（绝对）
 
 ```
-工程根      E:\Desktop\001\_barotrauma_tool
-源码        E:\Desktop\001\_barotrauma_tool\src
-编译输出    E:\Desktop\001\_barotrauma_tool\lib
-入口        E:\Desktop\001\_barotrauma_tool\lib\index.js
-测试        E:\Desktop\001\_barotrauma_tool\tools\{smoke,test-planning,test-items,test-e2e}.mjs
-参考文档    E:\Desktop\001\_barotrauma_tool\refs\reference.md
-临时产物    E:\Desktop\001\_barotrauma_tool\.scratch\   （可整目录删除）
+工程根      E:\Desktop\001\dsh-tool-barotrauma
+源码        E:\Desktop\001\dsh-tool-barotrauma\src
+编译输出    E:\Desktop\001\dsh-tool-barotrauma\lib
+入口        E:\Desktop\001\dsh-tool-barotrauma\lib\index.js
+测试        E:\Desktop\001\dsh-tool-barotrauma\tools\{smoke,test-planning,test-items,test-e2e}.mjs
+参考文档    E:\Desktop\001\dsh-tool-barotrauma\refs\reference.md
+临时产物    E:\Desktop\001\dsh-tool-barotrauma\.scratch\   （可整目录删除）
 profile     C:\Users\OtobeSpica\.dsh\profiles\desktop
 备份        C:\Users\OtobeSpica\.dsh\profiles\desktop\{package.json,pnpm-lock.yaml}.bak-20261010-133618
 ```
@@ -30,7 +30,7 @@ DSH 包      C:\Users\OtobeSpica\.dsh\profiles\node_modules\@deepseek-ai\*
 ## 工作流（关键）
 
 ```powershell
-Set-Location E:\Desktop\001\_barotrauma_tool
+Set-Location E:\Desktop\001\dsh-tool-barotrauma
 $node="C:\Users\OtobeSpica\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe"
 & $node ".\node_modules\typescript\bin\tsc" -p tsconfig.json   # 编译
 & $node tools\test-e2e.mjs                                     # 全链路测试
@@ -76,7 +76,7 @@ C# 新写法         modern: IAssemblyPlugin + [assembly: IgnoreAccessChecksTo] 
 ## 本次改动终态
 
 - 15 个 `barotrauma_*` 工具全部实现，`tsc` exit 0。
-- 插件已装进 `desktop` profile：`package.json` 里 `dependencies["dsh-tool-barotrauma"]="link:E:/Desktop/001/_barotrauma_tool"`，
+- 插件已装进 `desktop` profile：`package.json` 里 `dependencies["dsh-tool-barotrauma"]="link:E:/Desktop/001/dsh-tool-barotrauma"`，
   `dsh.profile.bundles` 末尾加 `dsh-tool-barotrauma`。
 - DSH 现场已加载：工具列表注入 15 个新 schema；profile 条目数 202 → 203。
 - `detect_env` 实测回值：gameDir `F:\SteamLibrary\steamapps\common\Barotrauma`、1.13.4.0、buildid 23799131、
@@ -129,9 +129,9 @@ L10N reason 取值               name-attribute / implicit / always / referenced
   E:\Desktop\dsh-tool-barotrauma-0.1.0\        解压即用目录，92 文件 / 0.76 MB
   E:\Desktop\dsh-tool-barotrauma-0.1.0.zip    251.1 KB
 工程（源码）
-  E:\Desktop\001\_barotrauma_tool
+  E:\Desktop\001\dsh-tool-barotrauma
 安装位置（已装且已在 DSH 现场验证加载）
-  C:\Users\OtobeSpica\.dsh\profiles\desktop   link:E:/Desktop/001/_barotrauma_tool
+  C:\Users\OtobeSpica\.dsh\profiles\desktop   link:E:/Desktop/001/dsh-tool-barotrauma
 游戏内验证 mod（用户已实测通过）
   F:\SteamLibrary\steamapps\common\Barotrauma\LocalMods\DSH_验证mod_可删除
 ```

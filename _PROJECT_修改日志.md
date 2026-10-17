@@ -7,14 +7,14 @@
 
 | 用途 | 绝对路径 |
 |---|---|
-| 工程根 | `E:\Desktop\001\_barotrauma_tool` |
-| 源码根 | `E:\Desktop\001\_barotrauma_tool\src` |
-| 编译输出 | `E:\Desktop\001\_barotrauma_tool\lib` |
-| 元数据 | `E:\Desktop\001\_barotrauma_tool\package.json` |
-| 构建配置 | `E:\Desktop\001\_barotrauma_tool\tsconfig.json` |
-| Cordis 补丁层 | `E:\Desktop\001\_barotrauma_tool\cordis.patch.yml` |
-| 测试脚本 | `E:\Desktop\001\_barotrauma_tool\tools\*.mjs` |
-| 事实参考（施工依据） | `E:\Desktop\001\_barotrauma_tool\refs\reference.md` |
+| 工程根 | `E:\Desktop\001\dsh-tool-barotrauma` |
+| 源码根 | `E:\Desktop\001\dsh-tool-barotrauma\src` |
+| 编译输出 | `E:\Desktop\001\dsh-tool-barotrauma\lib` |
+| 元数据 | `E:\Desktop\001\dsh-tool-barotrauma\package.json` |
+| 构建配置 | `E:\Desktop\001\dsh-tool-barotrauma\tsconfig.json` |
+| Cordis 补丁层 | `E:\Desktop\001\dsh-tool-barotrauma\cordis.patch.yml` |
+| 测试脚本 | `E:\Desktop\001\dsh-tool-barotrauma\tools\*.mjs` |
+| 事实参考（施工依据） | `E:\Desktop\001\dsh-tool-barotrauma\refs\reference.md` |
 | 安装位置 | `C:\Users\OtobeSpica\.dsh\profiles\desktop`（`link:` 依赖 + bundles 条目） |
 
 游戏侧（本机实测事实）：
@@ -30,7 +30,7 @@
 ## 二、编译 / 打包工作流
 
 ```powershell
-$proj="E:\Desktop\001\_barotrauma_tool"
+$proj="E:\Desktop\001\dsh-tool-barotrauma"
 $node="C:\Users\OtobeSpica\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe"
 Set-Location $proj
 
@@ -299,7 +299,7 @@ ERR_MODULE_NOT_FOUND: Cannot find package '@deepseek-ai/dsh-tools'
 装成 `link:` 之后，模块解析从**插件目录的真实路径**向上逐层找 `node_modules`，
 根本不会经过 profile 的 `node_modules`。
 
-之前一直"能用"是**巧合**：link 指向的源码目录 `E:\Desktop\001\_barotrauma_tool`
+之前一直"能用"是**巧合**：link 指向的源码目录 `E:\Desktop\001\dsh-tool-barotrauma`
 里恰好有 `node_modules\@deepseek-ai`（我 `pnpm install` typescript 时 pnpm 顺带自动装了 peers）。
 换成干净的发布包目录后，这个巧合就消失了。
 
