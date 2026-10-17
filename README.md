@@ -201,3 +201,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Target ProfileP
 ## 版本历史
 
 各版本的变更见 [CHANGELOG.md](CHANGELOG.md)。
+
+## 参与开发
+
+环境要求、构建与自检流程、改校验规则的约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。
