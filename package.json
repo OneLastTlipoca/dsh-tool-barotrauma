@@ -16,7 +16,6 @@
     "lib",
     "src",
     "tools",
-    "docs",
     "cordis.patch.yml",
     "install.ps1",
     "README.md",
@@ -42,6 +41,15 @@
     "steam-workshop"
   ],
   "license": "MIT",
+  "author": "OneLastTlipoca",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneLastTlipoca/dsh-tool-barotrauma.git"
+  },
+  "homepage": "https://github.com/OneLastTlipoca/dsh-tool-barotrauma#readme",
+  "bugs": {
+    "url": "https://github.com/OneLastTlipoca/dsh-tool-barotrauma/issues"
+  },
   "engines": {
     "node": ">=20.18.1"
   },

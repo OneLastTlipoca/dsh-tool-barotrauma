@@ -2,7 +2,7 @@
 
 ## 这是什么
 
-`dsh-tool-barotrauma` 是一个 **DeepSeek Harness（DSH）插件**，为 DSH 增加 15 个 `barotrauma_*` 工具，
+`dsh-tool-barotrauma` 是一个 **DeepSeek Harness（DSH）插件**，为 DSH 增加 17 个 `barotrauma_*` 工具，
 用来制作、校验、打包、发布潜渊症（Barotrauma）mod。
 
 **它不能单独运行** —— 必须装进一个 DSH profile，由 DSH 宿主进程加载。
@@ -152,19 +152,17 @@ New-Item -ItemType Junction "$plugin\node_modules\@deepseek-ai" -Target $peer
 ## 包内容
 
 ```
-dsh-tool-barotrauma-0.1.0/
+dsh-tool-barotrauma-0.5.0/
 ├── install.ps1              一键安装 / 卸载脚本
 ├── INSTALL.md               本文件
-├── 功能说明.md               完整功能文档（15 个工具逐个说明）
+├── 功能说明.md               完整功能文档（17 个工具逐个说明）
 ├── README.md                工程说明、构建方式、设计原则
 ├── LICENSE                  MIT
 ├── package.json             包元数据（dsh.bundle.patch 指向 cordis.patch.yml）
 ├── cordis.patch.yml         把插件挂进 profile loader 根列表的补丁层
 ├── lib/                     编译产物 —— **DSH 实际加载的就是这里**
 ├── src/                     TypeScript 源码（便于你改）
-├── tools/                   测试脚本（smoke / planning / items / e2e）
-└── docs/
-    └── reference.md         施工参考：基于本机真实 mod 的字段级取证（1085 行）
+└── tools/                   测试脚本（smoke / planning / items / e2e）
 ```
 
 想改插件行为：改 `src/` → 重编译 `lib/` → 重载 profile。

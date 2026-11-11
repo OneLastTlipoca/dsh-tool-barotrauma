@@ -6,7 +6,7 @@ DeepSeek Harness 插件：**潜渊症（Barotrauma）mod 制作工具集**。
 
 ---
 
-## 一、工具清单（15 个，全部已实现）
+## 一、工具清单（17 个，全部已实现）
 
 ### 阶段一 · 探测与规划
 
@@ -38,12 +38,14 @@ DeepSeek Harness 插件：**潜渊症（Barotrauma）mod 制作工具集**。
 |---|---|
 | `barotrauma_scan_l10n` | 扫描需要本地化的键，报告每种语言缺哪些（**不产出译文**） |
 | `barotrauma_translate` | 把**调用方提供的译文**写进语言文件；已有键不覆盖 |
+| `barotrauma_convert_names` | 英文名 XML ⇄ 中文名 XML 互转（元素名/属性名/枚举值），只换名字、格式原样保留 |
 
 ### 阶段五 · 校验与发布
 
 | 工具 | 作用 |
 |---|---|
 | `barotrauma_validate` | filelist 一致性、XML 结构、identifier 重复、贴图缺失（含**原版 `Content/` 引用**）、本地化缺口、弹药配套 |
+| `barotrauma_describe_component` | 按组件名或关键词查物品组件的官方属性表（85 个组件 / 609 条属性） |
 | `barotrauma_gen_icon` | AI 生图（Pollinations 免 Key）出物品图标 / 事件插图，直接请求目标尺寸 |
 | `barotrauma_pack` | 打包成可分发 zip（**自带最小 ZIP 写入器**，不依赖 7z/PowerShell） |
 | `barotrauma_publish` | 创意工坊发布文案 + 操作清单 + 发布前检查（**上传必须在游戏里做**） |
@@ -139,7 +141,7 @@ pnpm install
 pnpm build          # tsc 编译 src/ → lib/
 ```
 
-然后二选一：
+然后按需要选择：
 
 **A. 本地装进 DSH profile（开发时用）**
 
@@ -156,7 +158,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools\update-installed.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Target ProfilePath
 ```
 
-**装完要重启 DSH（或重载 profile）**：模块在 Host 进程里是缓存住的，换版本不重启不生效。
+**C. 从 npm 安装（普通用户推荐）**
+
+```sh
+dsh plugin --profile <profile> add dsh-tool-barotrauma
+```
+
+**装完要重启 DSH（或重载 profile）**：模块在 Host 进程里是缓存住的，换版本不重启不生效；重载后工具清单里出现 `barotrauma_*` 即可用。
 
 ### 构建产物清单（不入库，但分发时不缺）
 
